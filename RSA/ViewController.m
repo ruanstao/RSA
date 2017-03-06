@@ -19,6 +19,8 @@
 @property (strong, nonatomic) IBOutlet UITextField *decryptionTextField;
 @property (strong, nonatomic) IBOutlet UILabel *encryptionLabel;
 @property (strong, nonatomic) IBOutlet UILabel *dcryptionLabel;
+@property (nonatomic, strong) NSData *pub;
+@property (nonatomic, strong) NSData *pri;
 
 @end
 
@@ -26,7 +28,18 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    NSLog(@"%@",[NSBundle mainBundle]);
     // Do any additional setup after loading the view, typically from a nib.
+//    NSString * path = [[NSBundle mainBundle]pathForResource:@"1" ofType:@"txt"];
+    NSString *pubpath = [[NSBundle mainBundle] pathForResource:@"publicKey" ofType:@""];
+    self.pub  =[NSData dataWithContentsOfFile:pubpath];
+//    self.pub = [[NSString alloc] initWithData:pubdata encoding:NSUTF8StringEncoding];;
+    
+    NSString *pripath = [[NSBundle mainBundle] pathForResource:@"privateKey" ofType:@""];
+    self.pri =[NSData dataWithContentsOfFile:pripath];
+//    self.pri = [[NSString alloc] initWithData:pridata encoding:NSUTF8StringEncoding];;
+    NSLog(@"%@",self.pub);
+    NSLog(@"%@",self.pri);
 }
 
 
@@ -37,16 +50,27 @@
 - (IBAction)encryptionAction:(id)sender {
     //生成一个随机的8位字符串，作为des加密数据的key,对数据进行des加密，对加密后的数据用公钥再进行一次rsa加密
     
-    self.encryptionLabel.text = [RSAUtil encryptString: self.encryptionTextField.text publicKey:RSA_Public_key];
+//    self.encryptionLabel.text = [RSAUtil encryptString: self.encryptionTextField.text publicKey:RSA_Public_key];
+    
+    self.encryptionLabel.text = [RSAUtil encryptString: self.encryptionTextField.text publicKey:base64_encode_data(self.pub)];
     NSLog(@"%@",self.encryptionLabel.text);
     //_encryWithPublicKeyTextview.text = [RSA encryptString: _originTexfield.text privateKey:RSA_Privite_key];
     
 }
 - (IBAction)decryptionAction:(id)sender {
-    self.dcryptionLabel.text = [RSAUtil decryptString:self.decryptionTextField.text privateKey:RSA_Privite_key];
+    self.dcryptionLabel.text = [RSAUtil decryptString:self.decryptionTextField.text privateKey:base64_encode_data(self.pri)];
     NSLog(@"%@",self.dcryptionLabel.text);
     // _dencryWithPriviteKeyTextview.text = [RSA decryptString:RSA_Test_secret publicKey:RSA_Public_key];
 }
+static NSString *base64_encode_data(NSData *data){
+    data = [data base64EncodedDataWithOptions:0];
+    NSString *ret = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+    return ret;
+}
 
+static NSData *base64_decode(NSString *str){
+    NSData *data = [[NSData alloc] initWithBase64EncodedString:str options:NSDataBase64DecodingIgnoreUnknownCharacters];
+    return data;
+}
 
 @end

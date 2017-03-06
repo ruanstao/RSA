@@ -22,6 +22,8 @@
 		62A8FB561E6DADCF00476C06 /* NSString+Base64.m in Sources */ = {isa = PBXBuildFile; fileRef = 62A8FB4E1E6DADCF00476C06 /* NSString+Base64.m */; };
 		62A8FB571E6DADCF00476C06 /* MD5Util.m in Sources */ = {isa = PBXBuildFile; fileRef = 62A8FB501E6DADCF00476C06 /* MD5Util.m */; };
 		62A8FB581E6DADCF00476C06 /* RSAUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 62A8FB521E6DADCF00476C06 /* RSAUtil.m */; };
+		62A8FB5B1E6DBDF800476C06 /* publicKey in Resources */ = {isa = PBXBuildFile; fileRef = 62A8FB591E6DBB3F00476C06 /* publicKey */; };
+		62A8FB5C1E6DBDF800476C06 /* privateKey in Resources */ = {isa = PBXBuildFile; fileRef = 62A8FB5A1E6DBB4E00476C06 /* privateKey */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -71,6 +73,8 @@
 		62A8FB501E6DADCF00476C06 /* MD5Util.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MD5Util.m; sourceTree = "<group>"; };
 		62A8FB511E6DADCF00476C06 /* RSAUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RSAUtil.h; sourceTree = "<group>"; };
 		62A8FB521E6DADCF00476C06 /* RSAUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RSAUtil.m; sourceTree = "<group>"; };
+		62A8FB591E6DBB3F00476C06 /* publicKey */ = {isa = PBXFileReference; lastKnownFileType = file; path = publicKey; sourceTree = "<group>"; };
+		62A8FB5A1E6DBB4E00476C06 /* privateKey */ = {isa = PBXFileReference; lastKnownFileType = file; path = privateKey; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -132,6 +136,8 @@
 				62A8FB1B1E6DABCB00476C06 /* Assets.xcassets */,
 				62A8FB1D1E6DABCB00476C06 /* LaunchScreen.storyboard */,
 				62A8FB201E6DABCB00476C06 /* Info.plist */,
+				62A8FB591E6DBB3F00476C06 /* publicKey */,
+				62A8FB5A1E6DBB4E00476C06 /* privateKey */,
 				62A8FB0F1E6DABCB00476C06 /* Supporting Files */,
 			);
 			path = RSA;
@@ -304,6 +310,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				62A8FB5B1E6DBDF800476C06 /* publicKey in Resources */,
+				62A8FB5C1E6DBDF800476C06 /* privateKey in Resources */,
 				62A8FB1F1E6DABCB00476C06 /* LaunchScreen.storyboard in Resources */,
 				62A8FB1C1E6DABCB00476C06 /* Assets.xcassets in Resources */,
 				62A8FB1A1E6DABCB00476C06 /* Main.storyboard in Resources */,
